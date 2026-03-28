@@ -1,0 +1,41 @@
+# ==================================================
+# @file .gitconfig
+# @brief Git configuration file
+# ==================================================
+
+[include]
+	path = ~/.gitconfig.local
+
+[init]
+	defaultBranch = main
+
+[core]
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[merge]
+	conflictStyle = zdiff3
+
+[delta]
+	dark = true
+	navigate = true
+	features = line-numbers
+	keep-plus-minus-markers = true
+	side-by-side = true
+
+[ghq]
+	root = ~/src
+
+[alias]
+	st = status -sb
+	lg = log --oneline --graph --decorate --all
+	last = log -1 HEAD
+	df = diff
+	unstage = restore --staged
+	sw = switch
+	co = checkout
+	br = branch
+	ci = commit
+	amend = commit --amend --no-edit
