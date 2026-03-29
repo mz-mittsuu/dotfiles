@@ -25,3 +25,9 @@ keymap("i", "kj", "<Esc>", { desc = "Exit insert mode with kj" })
 -- --------------------------------------------------
 keymap("n", "j", "gj", { noremap = true, silent = true, desc = "Down visual line" })
 keymap("n", "k", "gk", { noremap = true, silent = true, desc = "Up visual line" })
+
+-- --------------------------------------------------
+-- line movement
+-- --------------------------------------------------
+keymap({ "n", "x" }, "H", "g0", { noremap = true, silent = true, desc = "Start of visual line" })
+keymap({ "n", "x" }, "L", "g$", { noremap = true, silent = true, desc = "End of visual line" })
