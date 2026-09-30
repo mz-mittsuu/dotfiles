@@ -1,0 +1,17 @@
+# ==================================================
+# @file ~/.config/bat/config
+# @brief bat display and paging configuration
+# ==================================================
+
+
+# Display line numbers, Git change indicators, and file headers
+--style=changes,grid,header-filename,numbers,snip
+
+# Show decorations only when output is written directly to a terminal
+--decorations=auto
+
+# Use a pager only when the output does not fit on the screen
+--paging=auto
+
+# Use the terminal's ANSI colors for syntax highlighting
+--theme=ansi

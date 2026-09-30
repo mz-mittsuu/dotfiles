@@ -1,0 +1,64 @@
+// ==================================================
+// @file %LOCALAPPDATA%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
+// @brief Windows Terminal appearance settings
+// ==================================================
+
+
+{
+    // --------------------------------------------------
+    // Appearance
+    // --------------------------------------------------
+
+    "showTabsInTitlebar": true,
+    "useAcrylicInTabRow": true,
+
+    "profiles": {
+        "defaults": {
+            "backgroundImage": "desktopWallpaper",
+            "backgroundImageOpacity": 0.1,
+            "colorScheme": "GitHub Dark Dimmed",
+            "cursorShape": "filledBox",
+            "font": {
+                "face": "UDEV Gothic 35NF",
+                "size": 12
+            },
+            "useAcrylic": true
+        },
+        "list": []
+    },
+
+
+    // --------------------------------------------------
+    // Color Scheme
+    // --------------------------------------------------
+
+    "schemes": [
+        {
+            "name": "GitHub Dark Dimmed",
+
+            "cursorColor": "#539BF5",
+            "selectionBackground": "#2C3E56",
+
+            "background": "#22272E",
+            "foreground": "#ADBAC7",
+
+            "black": "#545D68",
+            "red": "#F47067",
+            "green": "#57AB5A",
+            "yellow": "#C69026",
+            "blue": "#539BF5",
+            "purple": "#B083F0",
+            "cyan": "#39C5CF",
+            "white": "#909DAB",
+
+            "brightBlack": "#636E7B",
+            "brightRed": "#FF938A",
+            "brightGreen": "#6BC46D",
+            "brightYellow": "#DAAA3F",
+            "brightBlue": "#6CB6FF",
+            "brightPurple": "#DCBDFB",
+            "brightCyan": "#56D4DD",
+            "brightWhite": "#CDD9E5"
+        }
+    ]
+}

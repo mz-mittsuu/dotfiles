@@ -1,0 +1,49 @@
+# ==================================================
+# @file .github/ISSUE_TEMPLATE/feature-request.yml
+# @brief GitHub Issue Form for feature requests
+# ==================================================
+
+
+# --------------------------------------------------
+# Issue Form Configuration
+# --------------------------------------------------
+
+name: Feature Request
+description: 設定や環境構築の改善を提案します。
+title: "[Feature]: "
+labels:
+  - enhancement
+
+
+# --------------------------------------------------
+# Issue Form Fields
+# --------------------------------------------------
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        改善の提案ありがとうございます。
+        credential、token、private keyなどの秘密情報は記載しないでください。
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 背景・目的
+      description: 変更が必要となる背景や目的を記載してください。
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 希望する変更
+      description: どのような変更を希望するか記載してください。
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: 補足
+      description: その他に伝えておきたいことがあれば記載してください。

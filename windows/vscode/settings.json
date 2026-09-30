@@ -1,0 +1,87 @@
+// ==================================================
+// @file %APPDATA%\Code\User\settings.json
+// @brief VS Code appearance and extension settings
+// ==================================================
+
+
+{
+    // --------------------------------------------------
+    // Appearance
+    // --------------------------------------------------
+
+    // Explorer
+    "explorer.compactFolders": false,
+    "explorer.sortOrder": "type",
+
+    // Workbench
+    "workbench.activityBar.compact": true,
+    "workbench.colorTheme": "GitHub Dark Dimmed",
+    "workbench.editor.editorActionsLocation": "titleBar",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "workbench.sideBar.location": "right",
+    "workbench.tree.indent": 16,
+    "workbench.tree.renderIndentGuides": "always",
+
+    // Editor
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorSmoothCaretAnimation": "explicit",
+    "editor.cursorStyle": "block",
+    "editor.cursorSurroundingLines": 8,
+    "editor.cursorSurroundingLinesStyle": "all",
+    "editor.fontFamily": "'UDEV Gothic 35NF', 'JetBrainsMonoNL NFM', Consolas, monospace",
+    "editor.lineNumbers": "on",
+    "editor.minimap.enabled": false,
+    "editor.renderFinalNewline": "dimmed",
+    "editor.renderLineHighlight": "all",
+    "editor.renderWhitespace": "boundary",
+    "editor.smoothScrolling": true,
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.unicodeHighlight.invisibleCharacters": false,
+
+    // Files
+    "files.insertFinalNewline": true,
+
+    // Notebook
+    "notebook.lineNumbers": "on",
+
+    // Integrated Terminal
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.defaultLocation": "editor",
+    "terminal.integrated.tabs.hideCondition": "never",
+    "terminal.integrated.tabs.location": "left",
+
+
+    // --------------------------------------------------
+    // Extensions
+    // --------------------------------------------------
+
+    // LaTeX Workshop
+    "latex-workshop.formatting.latex": "latexindent",
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.latex.outDir": "%DIR%/build",
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk",
+            "tools": [
+                "latexmk"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-file-line-error",
+                "%DOCFILE%"
+            ]
+        }
+    ],
+
+    // Markdown All in One
+    "markdown.extension.toc.levels": "2..2",
+
+    // Markdown
+    "markdown.preview.breaks": true
+}

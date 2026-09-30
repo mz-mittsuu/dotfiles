@@ -1,0 +1,24 @@
+# ==================================================
+# @file ~/.config/latexmk/latexmkrc
+# @brief latexmk upLaTeX build configuration
+# ==================================================
+
+
+# LaTeX
+$latex = 'uplatex -interaction=nonstopmode -file-line-error %O %S';
+
+# BibTeX
+$bibtex = 'upbibtex %O %B';
+
+# DVI to PDF
+$dvipdf = 'dvipdfmx %O -o %D %S';
+
+# MakeIndex
+$makeindex = 'mendex %O -o %D %S';
+
+# Output
+$out_dir = 'build';
+$pdf_mode = 3;
+
+# Build
+$max_repeat = 5;
