@@ -1,0 +1,21 @@
+# ==================================================
+# @file ~/.config/ripgrep/config
+# @brief ripgrep search and output configuration
+# ==================================================
+
+
+# Use case-insensitive search unless the pattern contains uppercase letters
+--smart-case
+
+# Show line and column numbers
+--line-number
+--column
+
+# Show file paths as headings
+--heading
+
+# Separate non-contiguous context groups
+--context-separator=--
+
+# Sort results by file path
+--sort=path

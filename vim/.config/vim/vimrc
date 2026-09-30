@@ -1,0 +1,159 @@
+" ==================================================
+" @file ~/.config/vim/vimrc
+" @brief Vim editor configuration
+" ==================================================
+
+
+" --------------------------------------------------
+" General
+" --------------------------------------------------
+
+set encoding=utf-8
+
+filetype plugin indent on
+syntax on
+
+set hidden
+set autoread
+set confirm
+set mouse=a
+
+
+" --------------------------------------------------
+" Display
+" --------------------------------------------------
+
+set number
+set relativenumber
+set cursorline
+set signcolumn=yes
+set showmatch
+set scrolloff=8
+set sidescrolloff=8
+
+if has('termguicolors')
+    set termguicolors
+endif
+
+set background=dark
+
+set list
+set listchars=tab:→\ ,trail:·,extends:>,precedes:<,nbsp:␣
+
+
+" --------------------------------------------------
+" Editing
+" --------------------------------------------------
+
+set autoindent
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set shiftround
+
+set backspace=indent,eol,start
+
+
+" --------------------------------------------------
+" Search
+" --------------------------------------------------
+
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+
+" --------------------------------------------------
+" Completion
+" --------------------------------------------------
+
+set wildmenu
+set wildmode=longest:full,full
+set completeopt=menuone,noselect
+
+
+" --------------------------------------------------
+" Window Layout
+" --------------------------------------------------
+
+set splitright
+set splitbelow
+
+
+" --------------------------------------------------
+" Persistent State
+" --------------------------------------------------
+
+set viminfofile=$XDG_STATE_HOME/vim/viminfo
+
+if has('persistent_undo')
+    set undofile
+    set undodir=$XDG_STATE_HOME/vim/undo//
+endif
+
+
+" --------------------------------------------------
+" WSL Clipboard
+" --------------------------------------------------
+
+if has('clipboard_provider')
+    if executable('clip.exe') && executable('powershell.exe')
+
+        function! s:WslClipboardCopy(reg, type, lines) abort
+            call system('clip.exe', join(a:lines, "\r\n"))
+        endfunction
+
+        function! s:WslClipboardPaste(reg) abort
+            let l:text = system(
+                \ 'powershell.exe -NoProfile -Command Get-Clipboard -Raw'
+                \ )
+
+            let l:text = substitute(l:text, "\r\n", "\n", 'g')
+
+            return ['', split(l:text, "\n", 1)]
+        endfunction
+
+        let v:clipproviders['wsl'] = {
+            \ 'copy': {
+            \     '+': function('s:WslClipboardCopy'),
+            \     '*': function('s:WslClipboardCopy'),
+            \ },
+            \ 'paste': {
+            \     '+': function('s:WslClipboardPaste'),
+            \     '*': function('s:WslClipboardPaste'),
+            \ },
+            \ }
+
+        set clipmethod^=wsl
+        set clipboard=unnamedplus
+
+    endif
+endif
+
+
+" --------------------------------------------------
+" File Type Overrides
+" --------------------------------------------------
+
+augroup filetype_make
+    autocmd!
+    autocmd FileType make setlocal noexpandtab
+augroup END
+
+
+" --------------------------------------------------
+" Key Mappings
+" --------------------------------------------------
+
+let mapleader = " "
+set timeoutlen=500
+
+nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+
+inoremap jk <Esc>
+inoremap kj <Esc>
+
+nnoremap <Esc><Esc> :nohlsearch<CR>

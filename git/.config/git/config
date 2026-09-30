@@ -1,0 +1,131 @@
+# ==================================================
+# @file ~/.config/git/config
+# @brief Shared Git defaults, integrations, and aliases
+# ==================================================
+
+
+# --------------------------------------------------
+# General Settings
+# --------------------------------------------------
+
+[core]
+    editor = vim
+    pager = delta --config ~/.config/git/config
+
+[init]
+    defaultBranch = main
+
+[help]
+    autocorrect = prompt
+
+
+# --------------------------------------------------
+# Remote Operations
+# --------------------------------------------------
+
+[fetch]
+    prune = true
+
+[pull]
+    rebase = false
+
+[push]
+    autoSetupRemote = true
+
+
+# --------------------------------------------------
+# Diff and Merge
+# --------------------------------------------------
+
+[diff]
+    algorithm = histogram
+    colorMoved = default
+
+[merge]
+    conflictStyle = zdiff3
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    dark = true
+    navigate = true
+    line-numbers = true
+    side-by-side = true
+    keep-plus-minus-markers = true
+
+
+# --------------------------------------------------
+# External Tools
+# --------------------------------------------------
+
+[ghq]
+    root = ~/src
+
+
+# --------------------------------------------------
+# Command Aliases
+# --------------------------------------------------
+
+[alias]
+    # Getting and Creating Projects
+    cl    = clone
+
+    # Basic Snapshotting
+    a     = add
+    aa    = add --all
+    st    = status
+    sts   = status --short --branch
+    cm    = commit
+    cmm   = commit --message
+    amd   = commit --amend --no-edit
+    amdm  = commit --amend --message
+    rs    = restore
+    rss   = restore --staged
+
+    # Branching and Merging
+    br    = branch
+    bra   = branch --all
+    brv   = branch --all --verbose --verbose
+    brd   = branch --delete
+    sw    = switch
+    swc   = switch --create
+    mg    = merge
+
+    # Sharing and Updating Projects
+    ft    = fetch
+    ftp   = fetch --prune
+    pl    = pull
+    ps    = push
+    psu   = push --set-upstream
+    rmt   = remote
+    rmtv  = remote --verbose
+
+    # Inspection and Comparison
+    sh    = show
+    shn   = show --name-only
+    shst  = show --stat
+    lg    = log
+    lgo   = log --oneline
+    lgg   = log --oneline --graph --decorate --all
+    df    = diff
+    dfs   = diff --staged
+    dfn   = diff --name-only
+    dfns  = diff --name-only --staged
+    dfst  = diff --stat
+    dfsts = diff --stat --staged
+    dfc   = diff --check
+    dfcs  = diff --check --staged
+
+    # Patching
+    cp    = cherry-pick
+    rb    = rebase
+    rv    = revert
+
+
+# --------------------------------------------------
+# User-Specific Settings
+# --------------------------------------------------
+
+[include]
+    path = config.local

@@ -1,0 +1,13 @@
+# ==================================================
+# @file ~/.config/git/config.local.example
+# @brief Example user-specific Git identity
+# ==================================================
+
+
+# --------------------------------------------------
+# User Identity
+# --------------------------------------------------
+
+[user]
+    name = John Doe
+    email = 123456789+johndoe@users.noreply.github.com
