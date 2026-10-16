@@ -132,6 +132,7 @@ cd "$HOME/.dotfiles"
 
 ```text
 bat
+btop
 git
 latex
 oh-my-posh
@@ -148,6 +149,7 @@ zsh
 stow \
   --target="$HOME" \
   bat \
+  btop \
   git \
   latex \
   oh-my-posh \
