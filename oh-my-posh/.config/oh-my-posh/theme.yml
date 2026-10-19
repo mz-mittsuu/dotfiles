@@ -17,23 +17,23 @@ version: 4
 # --------------------------------------------------
 
 palette:
-  black: "black"
-  red: "red"
-  green: "green"
-  yellow: "yellow"
-  blue: "blue"
-  magenta: "magenta"
-  cyan: "cyan"
-  white: "white"
+  black: 'black'
+  red: 'red'
+  green: 'green'
+  yellow: 'yellow'
+  blue: 'blue'
+  magenta: 'magenta'
+  cyan: 'cyan'
+  white: 'white'
 
-  darkGray: "darkGray"
-  lightRed: "lightRed"
-  lightGreen: "lightGreen"
-  lightYellow: "lightYellow"
-  lightBlue: "lightBlue"
-  lightMagenta: "lightMagenta"
-  lightCyan: "lightCyan"
-  lightWhite: "lightWhite"
+  darkGray: 'darkGray'
+  lightRed: 'lightRed'
+  lightGreen: 'lightGreen'
+  lightYellow: 'lightYellow'
+  lightBlue: 'lightBlue'
+  lightMagenta: 'lightMagenta'
+  lightCyan: 'lightCyan'
+  lightWhite: 'lightWhite'
 
 
 # --------------------------------------------------
@@ -45,156 +45,77 @@ blocks:
   # Status Code
   - type: prompt
     newline: true
-    alignment: left
+    alignment: right
     force: true
     segments:
-      - type: status
-        style: plain
-        foreground: p:lightRed
-        template: "  ✘  {{ reason .Code }}"
 
-  # Execution Time
-  - type: prompt
-    alignment: right
-    segments:
+      # Execution Time
       - type: executiontime
         style: plain
         foreground: p:darkGray
-        template: "   {{ .FormattedMs }} "
+        template: '{{ if .Executed }}<b>{{ .FormattedMs }}</b>{{ end }} '
+        options:
+          always_enabled: true
+
+      # Status Code
+      - type: status
+        style: plain
+        foreground: p:lightGreen
+        foreground_templates:
+          - '{{ if .Error }}p:lightRed{{ end }}'
+        template: '{{ if .Executed }}<b>{{ if .Error }}✘ {{ else }}✔ {{ end }}{{ .Code }}</b>{{ end }}'
+        options:
+          always_enabled: true
 
   - type: prompt
     newline: true
     alignment: left
     segments:
-      - type: text
-        style: plain
-        foreground: p:darkGray
-        template: "╭"
-
-  - type: prompt
-    alignment: right
-    filler: "<p:darkGray>─</>"
-    segments:
-      - type: text
-        style: plain
-        foreground: p:darkGray
-        template: "╮"
-
-  - type: prompt
-    newline: true
-    alignment: left
-    segments:
-      - type: text
-        style: plain
-        foreground: p:darkGray
-        template: "│ "
 
       # OS
       - type: os
         style: plain
         foreground: p:lightGreen
-        template: "{{ .Icon }}  "
+        template: '<b>{{ .Icon }}</b> '
 
       # Session
       - type: session
         style: plain
         foreground: p:lightGreen
-        template: '{{ .UserName }}@{{ (split "." .HostName)._0 }}'
-
-  - type: prompt
-    alignment: right
-    segments:
-      - type: text
-        style: plain
-        foreground: p:darkGray
-        template: "│"
-
-  - type: prompt
-    newline: true
-    alignment: left
-    segments:
-      - type: text
-        style: plain
-        foreground: p:darkGray
-        template: "│ "
+        template: '<b>{{ .UserName }}@{{ (split "." .HostName)._0 }}</b> '
 
       # Path
       - type: path
         style: plain
         foreground: p:lightBlue
-        template: "  {{ .Path }}"
+        template: '<b> {{ .Path }}</b> '
         options:
           style: full
-
-  - type: prompt
-    alignment: right
-    segments:
-      - type: text
-        style: plain
-        foreground: p:darkGray
-        template: "│"
-
-  - type: prompt
-    newline: true
-    alignment: left
-    segments:
-      - type: git
-        style: plain
-        foreground: p:darkGray
-        template: "│ "
 
       # Git
       - type: git
         style: plain
         foreground: p:lightYellow
-        template: "{{ if .Upstream }}{{ .UpstreamIcon }}  {{ else }}󰊢  {{ end }}{{ .HEAD }}{{ if .Upstream }}...{{ .Upstream }} {{ end }}{{ if .Upstream }}[{{ if .UpstreamGone }}gone{{ else if or (gt .Ahead 0) (gt .Behind 0) }}{{ if gt .Ahead 0 }}ahead {{ .Ahead }}{{ end }}{{ if and (gt .Ahead 0) (gt .Behind 0) }}, {{ end }}{{ if gt .Behind 0 }}behind {{ .Behind }}{{ end }}{{ else }}up to date{{ end }}]{{ end }}{{ if .Working.Changed }}  {{ if gt .Working.Modified 0 }} M{{ .Working.Modified }}{{ end }}{{ if gt .Working.Added 0 }} A{{ .Working.Added }}{{ end }}{{ if gt .Working.Deleted 0 }} D{{ .Working.Deleted }}{{ end }}{{ if gt .Working.Untracked 0 }} ?{{ .Working.Untracked }}{{ end }}{{ if gt .Working.Unmerged 0 }} U{{ .Working.Unmerged }}{{ end }}{{ end }}{{ if .Staging.Changed }}  {{ if gt .Staging.Modified 0 }} M{{ .Staging.Modified }}{{ end }}{{ if gt .Staging.Added 0 }} A{{ .Staging.Added }}{{ end }}{{ if gt .Staging.Deleted 0 }} D{{ .Staging.Deleted }}{{ end }}{{ if gt .Staging.Untracked 0 }} ?{{ .Staging.Untracked }}{{ end }}{{ if gt .Staging.Unmerged 0 }} U{{ .Staging.Unmerged }}{{ end }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}"
+        template: '<b>󰊢 {{ .HEAD }}</b> '
         options:
-          fetch_status: true
-          fetch_upstream_icon: true
-          branch_icon: ""
-
-  - type: prompt
-    alignment: right
-    segments:
-      - type: git
-        style: plain
-        foreground: p:darkGray
-        template: "│"
-
-  - type: prompt
-    newline: true
-    alignment: left
-    segments:
-      - type: text
-        style: plain
-        foreground: p:darkGray
-        template: "╰"
-
-  - type: prompt
-    alignment: right
-    filler: "<p:darkGray>─</>"
-    segments:
-      - type: text
-        style: plain
-        foreground: p:darkGray
-        template: "╯"
-
-  - type: prompt
-    newline: true
-    alignment: left
-    segments:
+          branch_icon: ''
 
       # Python
       - type: python
         style: plain
         foreground: p:lightCyan
-        template: "{{ if .Venv }}({{ .Venv }}) {{ end }}"
+        template: '<b>{{ if .Venv }} {{ .Venv }}{{ end }}</b>'
+
+  - type: prompt
+    newline: true
+    alignment: left
+    segments:
 
       # Prompt Symbol
       - type: text
         style: plain
         foreground: p:blue
-        template: "› "
+        template: '% '
 
 
 # --------------------------------------------------
@@ -204,7 +125,7 @@ blocks:
 transient_prompt:
   newline: true
   foreground: p:blue
-  template: "› "
+  template: '% '
 
 
 # --------------------------------------------------
@@ -213,4 +134,4 @@ transient_prompt:
 
 secondary_prompt:
   foreground: p:blue
-  template: "│ "
+  template: '│ '
