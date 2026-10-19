@@ -129,9 +129,9 @@ fi
 
 if (( $+commands[eza] )); then
     alias ls='eza --icons=auto --group-directories-first'
-    alias l='eza -l --icons=auto --group-directories-first'
+    alias l='eza -lg --icons=auto --group-directories-first'
     alias la='eza -a --icons=auto --group-directories-first'
-    alias ll='eza -la --icons=auto --group-directories-first --git'
+    alias ll='eza -lag --icons=auto --group-directories-first --git'
     alias tree='eza --tree --icons=auto --group-directories-first'
 else
     alias ls='ls --color=auto'
@@ -153,7 +153,7 @@ autoload -Uz add-zsh-hook
 
 function chpwd_list() {
     if (( $+commands[eza] )); then
-        eza --tree --level=1 -l --icons=auto --group-directories-first -- "$PWD"
+        eza --tree --level=1 -lg --icons=auto --group-directories-first -- "$PWD"
     fi
 }
 
